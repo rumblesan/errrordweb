@@ -15,7 +15,7 @@ function mapStateToProps({ glitch }) {
 function mapDispatchToProps(dispatch) {
   return {
     createNewGlitch: () => {
-      dispatch(addGlitch(quantizeGlitch(10, 30, 'all')));
+      dispatch(addGlitch(quantizeGlitch(10, 0.03)));
     },
     removeGlitch: key => {
       console.log(`remove glitch ${key}`);
