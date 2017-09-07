@@ -1,9 +1,8 @@
 import React from 'react';
 
-function ImageDisplay({ image }) {
-  console.log(image.jpeg);
-  if (image.jpeg) {
-    const objurl = URL.createObjectURL(new Blob([image.jpeg.data]), {
+function ImageDisplay({ jpeg }) {
+  if (jpeg) {
+    const objurl = URL.createObjectURL(new Blob([jpeg.data]), {
       type: 'image/jpeg',
     });
 

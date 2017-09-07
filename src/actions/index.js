@@ -6,7 +6,7 @@ import {
   IMAGE_UPLOAD_ERROR,
   IMAGE_LOAD,
   IMAGE_SAVE,
-  IMAGE_GLITCH,
+  ADD_GLITCH,
 } from './types';
 
 export function imageUploadStart(fileData) {
@@ -57,9 +57,9 @@ export function imageSave(filename) {
   return { type: IMAGE_SAVE, filename };
 }
 
-export function glitchImage(glitch, image) {
+export function addGlitch(glitch) {
   return {
-    type: IMAGE_GLITCH,
+    type: ADD_GLITCH,
     glitch,
   };
 }

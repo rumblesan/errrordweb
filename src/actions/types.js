@@ -4,4 +4,5 @@ export const IMAGE_UPLOAD_ERROR = 'IMAGE_UPLOAD_ERROR';
 export const IMAGE_LOAD = 'IMAGE_LOAD';
 
 export const IMAGE_SAVE = 'IMAGE_SAVE';
-export const IMAGE_GLITCH = 'IMAGE_GLITCH';
+
+export const ADD_GLITCH = 'ADD_GLITCH';

@@ -8,7 +8,7 @@ export default function App(props) {
       <div id="header">
         <NavigationControls />
       </div>
-      <ImageDisplay image={props.image} />
+      <ImageDisplay jpeg={props.jpeg} />
     </div>
   );
 }
