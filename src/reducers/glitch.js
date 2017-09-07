@@ -9,7 +9,12 @@ export default function repos(state = initialState, action) {
     case ADD_GLITCH:
       return {
         ...state,
-        stack: state.stack.concat([action.payload]),
+        stack: state.stack.concat([
+          {
+            key: state.stack.length,
+            glitch: action.payload,
+          },
+        ]),
       };
     default:
       return state;

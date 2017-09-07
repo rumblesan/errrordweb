@@ -60,6 +60,6 @@ export function imageSave(filename) {
 export function addGlitch(glitch) {
   return {
     type: ADD_GLITCH,
-    glitch,
+    payload: glitch,
   };
 }

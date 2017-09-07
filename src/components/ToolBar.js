@@ -2,6 +2,7 @@ import React from 'react';
 
 import LogoWidget from 'components/LogoWidget';
 import LoadSaveWidgetContainer from 'containers/LoadSaveWidget/container';
+import GlitchWidgetContainer from 'containers/GlitchWidget/container';
 
 const widgets = [
   {
@@ -11,6 +12,10 @@ const widgets = [
   {
     key: 2,
     node: <LoadSaveWidgetContainer />,
+  },
+  {
+    key: 3,
+    node: <GlitchWidgetContainer />,
   },
 ];
 
