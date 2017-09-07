@@ -1,6 +1,6 @@
 import React from 'react';
 import NavigationControls from 'containers/NavigationControls';
-import ImageCanvas from 'containers/ImageCanvas';
+import ImageDisplay from 'components/ImageDisplay';
 
 export default function App(props) {
   return (
@@ -8,7 +8,7 @@ export default function App(props) {
       <div id="header">
         <NavigationControls />
       </div>
-      <ImageCanvas />
+      <ImageDisplay image={props.image} />
     </div>
   );
 }

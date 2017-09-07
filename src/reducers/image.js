@@ -1,39 +1,16 @@
-//import decodeJpeg from '../glitching/decoder';
-
-import {
-  IMAGE_UPLOAD_START,
-  IMAGE_UPLOAD_FINISH,
-  IMAGE_UPLOAD_ERROR,
-  IMAGE_SAVE,
-  IMAGE_GLITCH,
-} from 'actions/types';
+import { IMAGE_LOAD } from 'actions/types';
 
 const initialState = {
-  fileData: null,
-  imageData: null,
+  jpeg: null,
 };
 
 export default function repos(state = initialState, action) {
-  console.log(action);
   switch (action.type) {
-    case IMAGE_UPLOAD_START:
+    case IMAGE_LOAD:
       return {
-        fileData: action.fileData,
+        ...state,
+        jpeg: action.payload,
       };
-    case IMAGE_UPLOAD_FINISH:
-      return {
-        fileData: state.fileData,
-        imageData: action.imageData,
-      };
-    case IMAGE_UPLOAD_ERROR:
-      return {
-        fileData: null,
-        imageData: null,
-      };
-    case IMAGE_SAVE:
-      return state;
-    case IMAGE_GLITCH:
-      return state;
     default:
       return state;
   }

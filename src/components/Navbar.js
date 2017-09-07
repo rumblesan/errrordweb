@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default function Navbar({ fileUploadHandler }) {
+export default function Navbar({ glitchImage, fileUploadHandler }) {
   return (
     <ul className="navmenu">
       <li>Errrord Web</li>
@@ -17,6 +17,9 @@ export default function Navbar({ fileUploadHandler }) {
           id="files"
           name="files[]"
         />
+      </li>
+      <li>
+        <button onClick={glitchImage}>Glitch</button>
       </li>
     </ul>
   );

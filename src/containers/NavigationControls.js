@@ -1,7 +1,6 @@
-import React from 'react';
 import { connect } from 'react-redux';
 
-import { uploadImage } from 'actions';
+import { uploadImage, glitchImage } from 'actions';
 
 import Navbar from 'components/Navbar';
 
@@ -14,11 +13,10 @@ function mapDispatchToProps(dispatch, ownProps) {
     fileUploadHandler: filePath => {
       dispatch(uploadImage(filePath));
     },
+    glitchImage: () => {
+      dispatch(glitchImage('only glitch'));
+    },
   };
 }
 
-function NavigationControls(props) {
-  return <Navbar {...props} />;
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(NavigationControls);
+export default connect(mapStateToProps, mapDispatchToProps)(Navbar);
