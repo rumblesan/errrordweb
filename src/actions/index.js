@@ -1,21 +1,28 @@
+import { Jpeg } from 'glitchlib-js';
+
 import {
   IMAGE_UPLOAD_START,
   IMAGE_UPLOAD_FINISH,
   IMAGE_UPLOAD_ERROR,
+  IMAGE_LOAD,
   IMAGE_SAVE,
   IMAGE_GLITCH,
 } from './types';
 
 export function imageUploadStart(fileData) {
-  return { type: IMAGE_UPLOAD_START, fileData };
+  return { type: IMAGE_UPLOAD_START, payload: fileData };
 }
 
 export function imageUploadFinish(imageData) {
-  return { type: IMAGE_UPLOAD_FINISH, imageData };
+  return { type: IMAGE_UPLOAD_FINISH, payload: imageData };
+}
+
+export function imageLoad(jpeg) {
+  return { type: IMAGE_LOAD, payload: jpeg };
 }
 
 export function imageUploadError(message) {
-  return { type: IMAGE_UPLOAD_ERROR, message };
+  return { type: IMAGE_UPLOAD_ERROR, payload: message };
 }
 
 export function uploadImage(file) {
@@ -31,8 +38,15 @@ export function uploadImage(file) {
 
     // Closure to capture the file information.
     reader.onload = function(e) {
-      console.log('file loaded', reader);
-      dispatch(imageUploadFinish(reader.result));
+      let jpeg;
+      try {
+        jpeg = Jpeg.Jpeg(new Uint8Array(reader.result));
+      } catch (e) {
+        console.log(e);
+        dispatch(imageUploadError('Problem parsing image'));
+        return;
+      }
+      dispatch(imageLoad(jpeg));
     };
 
     reader.readAsArrayBuffer(file);
@@ -43,6 +57,9 @@ export function imageSave(filename) {
   return { type: IMAGE_SAVE, filename };
 }
 
-export function glitchImage(glitch) {
-  return { type: IMAGE_GLITCH, glitch };
+export function glitchImage(glitch, image) {
+  return {
+    type: IMAGE_GLITCH,
+    glitch,
+  };
 }
