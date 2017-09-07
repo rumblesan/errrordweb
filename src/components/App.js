@@ -1,14 +1,16 @@
 import React from 'react';
-import NavigationControls from 'containers/NavigationControls';
 import ImageDisplay from 'components/ImageDisplay';
+import ToolBar from 'components/ToolBar';
 
 export default function App(props) {
   return (
-    <div>
-      <div id="header">
-        <NavigationControls />
+    <div className="app">
+      <div className="app-sidebar">
+        <ToolBar />
       </div>
-      <ImageDisplay jpeg={props.jpeg} />
+      <div className="app-display">
+        <ImageDisplay jpeg={props.jpeg} />
+      </div>
     </div>
   );
 }
