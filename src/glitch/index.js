@@ -9,7 +9,6 @@ export function evalGlitchStack(jpeg, stack) {
   const newJpeg = Jpeg.copy(jpeg);
 
   stack.forEach(({ glitch }) => {
-    console.log('type', glitch);
     switch (glitch.type) {
       case QUANTIZE_GLITCH:
         quantGlitch(newJpeg, {

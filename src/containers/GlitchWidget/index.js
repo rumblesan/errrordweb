@@ -1,7 +1,6 @@
 import React from 'react';
 
 export default function GlitchWidget({ stack, createNewGlitch, removeGlitch }) {
-  console.log('stack', stack);
   return (
     <div className="loadsave-widget">
       <h3>Glitch</h3>

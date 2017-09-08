@@ -3,7 +3,6 @@ import App from 'components/App';
 import { evalGlitchStack } from 'glitch';
 
 function mapStateToProps({ image, glitch }) {
-  console.log(glitch);
   return {
     jpeg: evalGlitchStack(image.jpeg, glitch.stack),
   };
