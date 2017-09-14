@@ -1,4 +1,4 @@
-import { Jpeg, quantGlitch } from 'glitchlib-js';
+import { Jpeg, quantGlitch } from 'glitchlib';
 
 import { QUANTIZE_GLITCH } from 'glitch/types';
 

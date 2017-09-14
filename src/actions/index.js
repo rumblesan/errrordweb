@@ -1,4 +1,4 @@
-import { Jpeg } from 'glitchlib-js';
+import { Jpeg } from 'glitchlib';
 
 import {
   IMAGE_UPLOAD_START,
