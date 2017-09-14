@@ -29,7 +29,13 @@ class EditGlitchForm extends Component {
   handleSubmit(event) {
     event.preventDefault();
     const { seed, depth, quantTable } = this.state;
-    this.props.createNewGlitch(quantizeGlitch(seed, depth, quantTable));
+    let qt;
+    if (quantTable === 'all') {
+      qt = null;
+    } else {
+      qt = parseInt(quantTable, 10);
+    }
+    this.props.createNewGlitch(quantizeGlitch(seed, depth, qt));
   }
 
   render() {
