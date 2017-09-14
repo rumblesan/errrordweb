@@ -1,25 +1,23 @@
 import React from 'react';
 import ReactModal from 'react-modal';
 
-import { GLITCH_EDIT_MODAL } from 'actions/modals';
-
-const EditGlitchModal = props => {
+const HeadedModal = ({ isOpen, closeModal, title, children }) => {
   return (
     <ReactModal
-      isOpen={props.editGlitchModal.view === GLITCH_EDIT_MODAL}
-      onRequestClose={props.closeEditGlitchModal}
-      contentLabel="Edit Glitch"
-      style={{ content: { 'padding-top': '40px' } }}
+      isOpen={isOpen}
+      onRequestClose={closeModal}
+      contentLabel="Modal Menu"
+      style={{ content: { paddingTop: '40px' } }}
     >
       <header className="modal-heading">
-        <span onClick={props.closeEditGlitchModal} className="close">
+        <span onClick={closeModal} className="close">
           &times;
         </span>
-        <h2>Create Glitch</h2>
+        <h2>{title}</h2>
       </header>
-      {props.children}
+      {children}
     </ReactModal>
   );
 };
 
-export default EditGlitchModal;
+export default HeadedModal;

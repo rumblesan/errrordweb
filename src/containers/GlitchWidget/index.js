@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 
-import EditGlitchModal from 'components/EditGlitchModal';
+import HeadedModal from 'components/EditGlitchModal';
+import { GLITCH_EDIT_MODAL } from 'actions/modals';
 
 import { quantizeGlitch } from 'glitch/types';
 
@@ -19,15 +20,16 @@ export default function GlitchWidget({
         Add Glitch
       </button>
       <ul>{stack.map(g => <li key={g.key}>{g.glitch.type}</li>)}</ul>
-      <EditGlitchModal
-        editGlitchModal={editGlitchModal}
-        closeEditGlitchModal={closeEditGlitchModal}
+      <HeadedModal
+        isOpen={editGlitchModal.view === GLITCH_EDIT_MODAL}
+        closeModal={closeEditGlitchModal}
+        title="Create Glitch"
       >
-        <GlitchCreationForm createNewGlitch={createNewGlitch} />
-        <button className="pure-button" onClick={closeEditGlitchModal}>
-          Close Modal
-        </button>
-      </EditGlitchModal>
+        <GlitchCreationForm
+          cancelCreate={closeEditGlitchModal}
+          createNewGlitch={createNewGlitch}
+        />
+      </HeadedModal>
     </div>
   );
 }
@@ -61,37 +63,46 @@ class GlitchCreationForm extends Component {
   render() {
     return (
       <form
-        className="pure-form pure-form-stacked"
+        className="pure-form pure-form-aligned"
         onSubmit={this.handleSubmit}
       >
         <fieldset>
-          <label>
-            Seed:
+          <div className="pure-control-group">
+            <label htmlFor="edit-glitch-seed">Seed:</label>
             <input
+              id="edit-glitch-seed"
               type="text"
               value={this.state.seed}
               onChange={this.handleChange('seed')}
             />
-          </label>
-          <label>
-            Depth:
+          </div>
+
+          <div className="pure-control-group">
+            <label htmlFor="edit-glitch-depth">Depth:</label>
             <input
+              id="edit-glitch-depth"
               type="text"
               value={this.state.depth}
               onChange={this.handleChange('depth')}
             />
-          </label>
-          <label>
-            Quant Table:
+          </div>
+          <div className="pure-control-group">
+            <label htmlFor="edit-glitch-quant">Quant Table:</label>
             <input
+              id="edit-glitch-quant"
               type="text"
               value={this.state.quantTable}
               onChange={this.handleChange('quantTable')}
             />
-          </label>
-          <button type="submit" className="pure-button pure-button-primary">
-            Create
-          </button>
+          </div>
+          <div className="pure-controls">
+            <button type="submit" className="pure-button pure-button-primary">
+              Create
+            </button>
+            <button className="pure-button" onClick={this.props.cancelCreate}>
+              Cancel
+            </button>
+          </div>
         </fieldset>
       </form>
     );
