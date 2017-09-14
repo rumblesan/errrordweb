@@ -18,11 +18,11 @@
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
-    "prettier": "prettier --single-quote --trailing-comma es5"
+    "prettier": "prettier"
   },
   "devDependencies": {
     "eslint-config-prettier": "^2.4.0",
     "eslint-plugin-prettier": "^2.2.0",
-    "prettier": "^1.6.1"
+    "prettier": "^1.7.0"
   }
 }
