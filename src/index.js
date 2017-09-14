@@ -2,7 +2,10 @@ import React from 'react';
 import { render } from 'react-dom';
 import { Provider } from 'react-redux';
 
-import 'index.css';
+import 'style/index.css';
+import 'style/pure/base.css';
+import 'style/pure/forms.css';
+import 'style/pure/buttons.css';
 
 import App from 'containers/App/container';
 

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import ReactModal from 'react-modal';
-import { GLITCH_EDIT_MODAL } from 'actions/modals';
+
+import EditGlitchModal from 'components/EditGlitchModal';
 
 import { quantizeGlitch } from 'glitch/types';
 
@@ -15,17 +15,19 @@ export default function GlitchWidget({
   return (
     <div className="loadsave-widget">
       <h3>Glitch</h3>
-      <button onClick={addGlitch}>Add Glitch</button>
+      <button className="pure-button" onClick={addGlitch}>
+        Add Glitch
+      </button>
       <ul>{stack.map(g => <li key={g.key}>{g.glitch.type}</li>)}</ul>
-      <ReactModal
-        isOpen={editGlitchModal.view === GLITCH_EDIT_MODAL}
-        onRequestClose={closeEditGlitchModal}
-        contentLabel="Edit Glitch"
+      <EditGlitchModal
+        editGlitchModal={editGlitchModal}
+        closeEditGlitchModal={closeEditGlitchModal}
       >
-        <h2>Create Glitch</h2>
         <GlitchCreationForm createNewGlitch={createNewGlitch} />
-        <button onClick={closeEditGlitchModal}>Close Modal</button>
-      </ReactModal>
+        <button className="pure-button" onClick={closeEditGlitchModal}>
+          Close Modal
+        </button>
+      </EditGlitchModal>
     </div>
   );
 }
@@ -58,32 +60,39 @@ class GlitchCreationForm extends Component {
 
   render() {
     return (
-      <form onSubmit={this.handleSubmit}>
-        <label>
-          Seed:
-          <input
-            type="text"
-            value={this.state.seed}
-            onChange={this.handleChange('seed')}
-          />
-        </label>
-        <label>
-          Depth:
-          <input
-            type="text"
-            value={this.state.depth}
-            onChange={this.handleChange('depth')}
-          />
-        </label>
-        <label>
-          Quant Table:
-          <input
-            type="text"
-            value={this.state.quantTable}
-            onChange={this.handleChange('quantTable')}
-          />
-        </label>
-        <input type="submit" value="Submit" />
+      <form
+        className="pure-form pure-form-stacked"
+        onSubmit={this.handleSubmit}
+      >
+        <fieldset>
+          <label>
+            Seed:
+            <input
+              type="text"
+              value={this.state.seed}
+              onChange={this.handleChange('seed')}
+            />
+          </label>
+          <label>
+            Depth:
+            <input
+              type="text"
+              value={this.state.depth}
+              onChange={this.handleChange('depth')}
+            />
+          </label>
+          <label>
+            Quant Table:
+            <input
+              type="text"
+              value={this.state.quantTable}
+              onChange={this.handleChange('quantTable')}
+            />
+          </label>
+          <button type="submit" className="pure-button pure-button-primary">
+            Create
+          </button>
+        </fieldset>
       </form>
     );
   }

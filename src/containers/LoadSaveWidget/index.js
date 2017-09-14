@@ -15,7 +15,9 @@ export default function LoadSaveWidget({ loadImage, saveImage }) {
         id="files"
         name="files[]"
       />
-      <button onClick={saveImage}>Save Image</button>
+      <button className="pure-button" onClick={saveImage}>
+        Save Image
+      </button>
     </div>
   );
 }
