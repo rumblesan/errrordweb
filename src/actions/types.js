@@ -6,6 +6,7 @@ export const IMAGE_LOAD = 'IMAGE_LOAD';
 export const IMAGE_SAVE = 'IMAGE_SAVE';
 
 export const ADD_GLITCH = 'ADD_GLITCH';
+export const REMOVE_GLITCH = 'REMOVE_GLITCH';
 
 export const OPEN_UI_MODAL = 'OPEN_UI_MODAL';
 export const CLOSE_UI_MODAL = 'CLOSE_UI_MODAL';

@@ -7,6 +7,7 @@ import {
   IMAGE_LOAD,
   IMAGE_SAVE,
   ADD_GLITCH,
+  REMOVE_GLITCH,
   OPEN_UI_MODAL,
   CLOSE_UI_MODAL,
 } from './types';
@@ -63,6 +64,13 @@ export function addGlitch(glitch) {
   return {
     type: ADD_GLITCH,
     payload: glitch,
+  };
+}
+
+export function removeGlitch(glitchId) {
+  return {
+    type: REMOVE_GLITCH,
+    payload: glitchId,
   };
 }
 

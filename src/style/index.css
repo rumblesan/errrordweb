@@ -70,3 +70,13 @@ label.file-input input[type="file"] {
 .no-image-message {
   padding: 20px;
 }
+
+.glitchStack {
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+button.remove-glitch {
+  font-size: 70%;
+  margin: 5px;
+}

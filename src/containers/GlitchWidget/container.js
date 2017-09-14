@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 
-import { addGlitch, openModal, closeModal } from 'actions';
+import { addGlitch, removeGlitch, openModal, closeModal } from 'actions';
 import { GLITCH_EDIT_MODAL } from 'actions/modals';
 
 import GlitchWidget from './index';
@@ -18,8 +18,8 @@ function mapDispatchToProps(dispatch) {
       dispatch(closeModal());
       dispatch(addGlitch(glitch));
     },
-    removeGlitch: key => {
-      console.log(`remove glitch ${key}`);
+    removeGlitch: glitchId => {
+      dispatch(removeGlitch(glitchId));
     },
     addGlitch: () => {
       dispatch(openModal(GLITCH_EDIT_MODAL));

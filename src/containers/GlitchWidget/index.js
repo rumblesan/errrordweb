@@ -18,7 +18,15 @@ export default function GlitchWidget({
       <button className="pure-button" onClick={addGlitch}>
         Add Glitch
       </button>
-      <ul>{stack.map(g => <li key={g.key}>{g.glitch.type}</li>)}</ul>
+      <ul className="glitchStack">
+        {stack.map((g, idx) => (
+          <GlitchElement
+            remove={() => removeGlitch(idx)}
+            key={idx}
+            glitch={g}
+          />
+        ))}
+      </ul>
       <HeadedModal
         isOpen={editGlitchModal.view === GLITCH_EDIT_MODAL}
         closeModal={closeEditGlitchModal}
@@ -30,5 +38,16 @@ export default function GlitchWidget({
         />
       </HeadedModal>
     </div>
+  );
+}
+
+function GlitchElement({ glitch, remove }) {
+  return (
+    <li>
+      <button className="pure-button remove-glitch" onClick={remove}>
+        &times;
+      </button>
+      {glitch.type}
+    </li>
   );
 }
