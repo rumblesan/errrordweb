@@ -7,6 +7,8 @@ import {
   IMAGE_LOAD,
   IMAGE_SAVE,
   ADD_GLITCH,
+  OPEN_UI_MODAL,
+  CLOSE_UI_MODAL,
 } from './types';
 
 export function imageUploadStart(fileData) {
@@ -61,5 +63,18 @@ export function addGlitch(glitch) {
   return {
     type: ADD_GLITCH,
     payload: glitch,
+  };
+}
+
+export function openModal(view) {
+  return {
+    type: OPEN_UI_MODAL,
+    payload: view,
+  };
+}
+
+export function closeModal() {
+  return {
+    type: CLOSE_UI_MODAL,
   };
 }

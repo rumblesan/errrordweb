@@ -13,6 +13,7 @@ export function evalGlitchStack(jpeg, stack) {
       case QUANTIZE_GLITCH:
         quantGlitch(newJpeg, {
           depth: glitch.depth,
+          seed: glitch.seed,
           quantTable: glitch.quantTable,
         });
         return;
