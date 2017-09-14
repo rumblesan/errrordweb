@@ -35,6 +35,9 @@ html, body, #root {
   border: 1px solid grey;
   padding: 5px;
 }
+label.file-input input[type="file"] {
+  display: none;
+}
 
 .modal-heading {
   width: 100%;
