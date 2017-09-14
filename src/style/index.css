@@ -64,3 +64,9 @@ label.file-input input[type="file"] {
   cursor:pointer;
   white-space:nowrap;
 }
+
+/* Specifics */
+
+.no-image-message {
+  padding: 20px;
+}

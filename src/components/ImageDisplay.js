@@ -9,7 +9,12 @@ function ImageDisplay({ jpeg }) {
 
     image = <img alt="glitched" src={objurl} />;
   } else {
-    image = <h2>No Image</h2>;
+    image = (
+      <div className="no-image-message">
+        <h2>No Image</h2>
+        <div>Please load an image</div>
+      </div>
+    );
   }
   return <div className="image-display">{image}</div>;
 }
