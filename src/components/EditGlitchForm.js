@@ -18,7 +18,11 @@ class EditGlitchForm extends Component {
 
   handleChange(key) {
     return event => {
-      this.setState({ [key]: event.target.value });
+      let val = event.target.value;
+      if (key === 'depth' || key === 'seed') {
+        val = parseFloat(val);
+      }
+      this.setState({ [key]: val });
     };
   }
 
