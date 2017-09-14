@@ -6,21 +6,20 @@ export function evalGlitchStack(jpeg, stack) {
   if (!jpeg) {
     return jpeg;
   }
-  const newJpeg = Jpeg.copy(jpeg);
 
-  stack.forEach(glitch => {
+  return stack.reduce((img, glitch) => {
+    let newImg;
     switch (glitch.type) {
       case QUANTIZE_GLITCH:
-        quantGlitch(newJpeg, {
+        newImg = Jpeg.copy(img);
+        quantGlitch(newImg, {
           depth: glitch.depth,
           seed: glitch.seed,
           quantTable: glitch.quantTable,
         });
-        return;
+        return newImg;
       default:
-        return;
+        return img;
     }
-  });
-
-  return newJpeg;
+  }, Jpeg.copy(jpeg));
 }
