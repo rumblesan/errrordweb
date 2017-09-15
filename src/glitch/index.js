@@ -1,4 +1,4 @@
-import { Jpeg, quantGlitch } from 'glitchlib';
+import { quantGlitch } from 'glitchlib';
 
 import { QUANTIZE_GLITCH } from 'glitch/types';
 
@@ -8,18 +8,15 @@ export function evalGlitchStack(jpeg, stack) {
   }
 
   return stack.reduce((img, glitch) => {
-    let newImg;
     switch (glitch.type) {
       case QUANTIZE_GLITCH:
-        newImg = Jpeg.copy(img);
-        quantGlitch(newImg, {
+        return quantGlitch(img, {
           depth: glitch.depth,
           seed: glitch.seed,
           quantTable: glitch.quantTable,
         });
-        return newImg;
       default:
         return img;
     }
-  }, Jpeg.copy(jpeg));
+  }, jpeg);
 }
