@@ -77,7 +77,11 @@ class EditGlitchForm extends Component {
             <button type="submit" className="pure-button pure-button-primary">
               Create
             </button>
-            <button className="pure-button" onClick={this.props.cancelCreate}>
+            <button
+              type="button"
+              className="pure-button"
+              onClick={this.props.cancelCreate}
+            >
               Cancel
             </button>
           </div>
