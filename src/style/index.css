@@ -17,7 +17,7 @@ html, body, #root {
 .app-sidebar {
   box-flex:  0;  
   height: 100%;
-  width: 350px;
+  width: 450px;
 }
 
 .app-display {
