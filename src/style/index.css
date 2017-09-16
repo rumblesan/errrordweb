@@ -76,7 +76,15 @@ label.file-input input[type="file"] {
   margin-bottom: 5px;
 }
 
-button.remove-glitch {
+.GlitchElement .glitch-name {
+  vertical-align: bottom;
+}
+
+.GlitchElement .glitch-controls {
+  display: inline;
+  margin-right: 5px;
+}
+
+.GlitchElement .glitch-controls button {
   font-size: 70%;
-  margin: 5px;
 }

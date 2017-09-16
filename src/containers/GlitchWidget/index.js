@@ -22,6 +22,7 @@ export default function GlitchWidget({
         {stack.map((g, idx) => (
           <GlitchElement
             remove={() => removeGlitch(idx)}
+            edit={() => console.log(`edit ${idx}`)}
             key={idx}
             glitch={g}
           />
@@ -41,13 +42,22 @@ export default function GlitchWidget({
   );
 }
 
-function GlitchElement({ glitch, remove }) {
+function GlitchElement({ glitch, remove, edit }) {
   return (
-    <li>
-      <button className="pure-button remove-glitch" onClick={remove}>
-        &times;
-      </button>
-      {glitch.type}
+    <li className="GlitchElement">
+      <div
+        className="pure-button-group glitch-controls"
+        role="group"
+        aria-label="..."
+      >
+        <button className="pure-button" onClick={remove}>
+          Remove
+        </button>
+        <button className="pure-button" onClick={edit}>
+          Edit
+        </button>
+      </div>
+      <span className="glitch-name">{glitch.type}</span>
     </li>
   );
 }
