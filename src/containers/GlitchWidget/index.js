@@ -7,11 +7,19 @@ import { GLITCH_EDIT_MODAL } from 'actions/modals';
 export default function GlitchWidget({
   stack,
   editGlitchModal,
-  addGlitch,
-  closeEditGlitchModal,
+  editingGlitch,
   createNewGlitch,
+  cancelEditGlitch,
+  addGlitch,
+  editGlitch,
+  updateGlitch,
   removeGlitch,
 }) {
+  const defaultGlitch = {
+    depth: 0.05,
+    seed: Math.random(),
+    quantTable: 'all',
+  };
   return (
     <div className="loadsave-widget">
       <h3>Glitch</h3>
@@ -22,7 +30,7 @@ export default function GlitchWidget({
         {stack.map((g, idx) => (
           <GlitchElement
             remove={() => removeGlitch(idx)}
-            edit={() => console.log(`edit ${idx}`)}
+            edit={() => editGlitch(idx)}
             key={idx}
             glitch={g}
           />
@@ -30,12 +38,16 @@ export default function GlitchWidget({
       </ul>
       <HeadedModal
         isOpen={editGlitchModal.view === GLITCH_EDIT_MODAL}
-        closeModal={closeEditGlitchModal}
+        closeModal={cancelEditGlitch}
         title="Create Glitch"
       >
         <EditGlitchForm
-          cancelCreate={closeEditGlitchModal}
-          createNewGlitch={createNewGlitch}
+          editing={editingGlitch !== null}
+          cancelCreate={cancelEditGlitch}
+          createNewGlitch={
+            editingGlitch !== null ? updateGlitch : createNewGlitch
+          }
+          glitch={editingGlitch !== null ? stack[editingGlitch] : defaultGlitch}
         />
       </HeadedModal>
     </div>

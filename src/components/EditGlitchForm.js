@@ -3,13 +3,13 @@ import React, { Component } from 'react';
 import { quantizeGlitch } from 'glitch/types';
 
 class EditGlitchForm extends Component {
-  constructor() {
+  constructor({ glitch }) {
     super();
     this.state = {
       type: 'quantize',
-      depth: 0.05,
-      seed: Math.random(),
-      quantTable: 'all',
+      depth: glitch.depth,
+      seed: glitch.seed,
+      quantTable: glitch.quantTable,
     };
 
     this.handleChange = this.handleChange.bind(this);
@@ -31,7 +31,7 @@ class EditGlitchForm extends Component {
     const { seed, depth, quantTable } = this.state;
     let qt;
     if (quantTable === 'all') {
-      qt = null;
+      qt = 'all';
     } else {
       qt = parseInt(quantTable, 10);
     }
@@ -75,7 +75,7 @@ class EditGlitchForm extends Component {
           </div>
           <div className="pure-controls">
             <button type="submit" className="pure-button pure-button-primary">
-              Create
+              {this.props.editing ? 'Update' : 'Create'}
             </button>
             <button
               type="button"
